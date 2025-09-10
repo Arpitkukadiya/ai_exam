@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Mid Exam — Prolog Solutions</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>AI Mid Exam — All Sets (Prolog Solutions)</h1>
+      <p class="lead">All 4 sets of questions, family tree Prolog problems and solutions. Download the full PDF or the entire site bundle.</p>
+      <div class="actions">
+        <a class="btn" id="downloadPdf" href="AI_Mid_Exam_Solved.pdf" download>Download PDF</a>
+        <!--a class="btn alt" id="downloadZip" href="ai_exam_site.zip" download>Download Site Bundle (ZIP)</!--a>
+      --> </div>
+      <input id="search" placeholder="Search questions or code..." />
+    </div>
+  </header>
+
+  <main class="container content">
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>This page contains all exam sets (SET-1 to SET-4) with Prolog solutions, plus two family-tree problems and their Prolog knowledge bases and sample queries.</p>
+    </section>
+
+    <section id="sets">
+      <h2>Sets &amp; Solutions</h2>
+
+      <details open>
+        <summary><strong>SET-1 Questions &amp; Answers</strong></summary>
+        <pre class="code">
+1. Write any 2 Prolog Programmes
+2. Find square and cube of a number
+3. Find maximum number out of three numbers
+4. Display addition of numbers from 1 to N
+
+-- Answers (Prolog) --
+% Square and Cube
+square_cube(N, S, C) :- S is N*N, C is N*N*N.
+
+% Max of 3 numbers
+max3(A,B,C,Max) :- Max is max(A, max(B,C)).
+
+% Sum 1 to N
+sum_n(1,1).
+sum_n(N,Sum) :- N > 1, N1 is N-1, sum_n(N1,Sum1), Sum is Sum1 + N.
+        </pre>
+      </details>
+
+      <details>
+        <summary><strong>SET-2 Questions &amp; Answers</strong></summary>
+        <pre class="code">
+1. Write any 2 Prolog Programmes
+2. Area &amp; perimeter of a circle
+3. Check divisible by 4
+4. Addition from N1 to N2
+
+-- Answers (Prolog) --
+% Circle area & perimeter
+circle(R, Area, Perimeter) :- Area is 3.14*R*R, Perimeter is 2*3.14*R.
+
+% Divisible by 4
+divisible_by_4(N) :- 0 is N mod 4.
+
+% Sum between N1 and N2
+sum_range(N1,N1,N1).
+sum_range(N1,N2,Sum) :- N1 < N2, N3 is N2-1, sum_range(N1,N3,Sum1), Sum is Sum1 + N2.
+        </pre>
+      </details>
+
+      <details>
+        <summary><strong>SET-3 Questions &amp; Answers</strong></summary>
+        <pre class="code">
+1. Write any 2 Prolog Programmes
+2. Convert year into minutes
+3. Check odd or even
+4. Series from 1 to N
+
+-- Answers (Prolog) --
+% Year to Minutes
+year_to_minutes(Y, M) :- M is Y * 365 * 24 * 60.
+
+% Odd or Even
+is_even(N) :- 0 is N mod 2.
+is_odd(N) :- 1 is N mod 2.
+
+% Series from 1 to N
+series(N) :- series_helper(1,N).
+series_helper(I,N) :- I =< N, write(I), nl, I1 is I+1, series_helper(I1,N).
+series_helper(I,N) :- I > N.
+        </pre>
+      </details>
+
+      <details>
+        <summary><strong>SET-4 Questions &amp; Answers</strong></summary>
+        <pre class="code">
+1. Write any 2 Prolog Programmes
+2. Area &amp; perimeter of a circle
+3. Pass or Fail for percentage
+4. Series from N to 1
+
+-- Answers (Prolog) --
+% Circle (same as Set-2)
+circle(R, Area, Perimeter) :- Area is 3.14*R*R, Perimeter is 2*3.14*R.
+
+% Pass or Fail
+result(Per,'Pass') :- Per >= 40.
+result(Per,'Fail') :- Per < 40.
+
+% Series from N to 1
+series(N) :- N > 0, write(N), nl, N1 is N-1, series(N1).
+series(0).
+        </pre>
+      </details>
+    </section>
+
+    <section id="family1">
+      <h2>Family Tree — Bob &amp; Co.</h2>
+      <p><strong>Facts &amp; Prolog KB</strong></p>
+      <pre class="code">
+% Facts
+male(tom). male(bob). male(peter). male(jim).
+female(pam). female(liz). female(ann). female(pat).
+
+parent(pam, bob). parent(tom, bob).
+parent(bob, ann). parent(bob, peter). parent(bob, pat).
+parent(liz, ann). parent(liz, peter). parent(liz, pat).
+parent(peter, jim).
+
+married(tom, pam). married(pam, tom).
+married(bob, liz). married(liz, bob).
+      </pre>
+      <p><strong>Rules</strong></p>
+      <pre class="code">
+father(F, C) :- male(F), parent(F, C).
+mother(M, C) :- female(M), parent(M, C).
+grandparent(GP, GC) :- parent(GP, P), parent(P, GC).
+sibling(X, Y) :- parent(P, X), parent(P, Y), X \= Y.
+uncle(U, N) :- male(U), parent(P, N), sibling(U, P).
+aunt(A, N) :- female(A), parent(P, N), sibling(A, P).
+      </pre>
+      <p><strong>Sample Answers</strong>: Parents of Bob → Pam, Tom; Bob's kids → Ann, Peter, Pat; Jim's aunt → Ann, Pat; etc.</p>
+    </section>
+
+    <section id="family2">
+      <h2>Family Tree — Karan/Jack &amp; David/Amy</h2>
+      <p><strong>Facts &amp; Prolog KB</strong></p>
+      <pre class="code">
+male(karan). male(jack). male(david). male(ray). male(john). male(peter).
+female(amy). female(susan). female(liza). female(mary).
+
+parent(karan, ray). parent(karan, susan). parent(jack, susan).
+parent(david, john). parent(david, liza). parent(amy, john). parent(amy, liza).
+parent(susan, peter). parent(susan, mary). parent(john, peter). parent(john, mary).
+
+married(karan, jack). married(jack, karan).
+married(david, amy). married(amy, david).
+married(susan, john). married(john, susan).
+      </pre>
+      <p><strong>Sample Answers</strong>: Susan's parents → Karan, Jack; Peter's parents → Susan, John; Mary’s nani → Amy; etc.</p>
+    </section>
+
+    <section id="embeddedPdf">
+      <h2>Embedded PDF</h2>
+      <p>You can view the full solved PDF below. Use the download button above to get the PDF.</p>
+      <embed src="AI_Mid_Exam_Solved.pdf" type="application/pdf" width="100%" height="600px" />
+    </section>
+
+    <footer class="footer">
+      <p>Made with ❤️ — AI Mid Exam Prolog Solutions</p>
+      <p class="small">Tip: Use the search box to quickly find a function or question (client-side search).</p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
