@@ -4,30 +4,30 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>AI Mid Exam — Prolog Solutions</title>
-  <link rel="stylesheet" href="styles.css">
   <style>
-    body { font-family: Inter, Roboto, sans-serif; margin: 0; background: #f6f8fa; color: #111; }
+    body { font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; background: #f6f8fa; color: #111; }
     header.hero { background:#0b84ff; color:white; padding:40px 20px; text-align:center; }
     header .lead { font-size:1.1rem; max-width:700px; margin:10px auto; }
     .actions { margin-top:15px; }
     .btn { padding:10px 16px; border-radius:6px; border:none; cursor:pointer; background:white; color:#0b84ff; font-weight:600; text-decoration:none; margin:4px; display:inline-block; }
-    .btn.alt { background:#333; color:#fff; }
-    main.container { max-width:960px; margin:20px auto; padding:20px; }
-    h2 { margin-top:30px; }
-    pre.code { background:#0b1220; color:#dbeafe; padding:12px; border-radius:6px; overflow-x:auto; }
-    details { margin-bottom:18px; }
-    footer.footer { background:#111; color:#aaa; text-align:center; padding:20px; margin-top:40px; }
-    input#search { margin-top:16px; padding:8px; border-radius:6px; border:1px solid #ccc; width:260px; }
+    main.container { max-width:1000px; margin:20px auto; padding:20px; }
+    h2 { margin-top:30px; border-left:6px solid #0b84ff; padding-left:10px; }
+    details { margin-bottom:22px; border:1px solid #ddd; border-radius:6px; background:white; }
+    summary { padding:12px; font-weight:700; font-size:1.05rem; background:#eef6ff; cursor:pointer; border-radius:6px 6px 0 0; }
+    .question { background:#f9fafb; padding:10px; border-left:4px solid #0b84ff; font-weight:600; margin-top:12px; }
+    pre.code { background:#0b1220; color:#dbeafe; padding:14px; border-radius:6px; overflow-x:auto; margin:0; font-size:0.95rem; }
     .download-btn { background:#0b84ff; color:white; padding:8px 12px; border-radius:6px; cursor:pointer; margin:6px 0; border:none; font-weight:600; }
+    input#search { margin-top:16px; padding:8px; border-radius:6px; border:1px solid #ccc; width:260px; }
+    footer.footer { background:#111; color:#aaa; text-align:center; padding:20px; margin-top:40px; font-size:0.9rem; }
   </style>
 </head>
 <body>
   <header class="hero">
     <div class="container">
       <h1>AI Mid Exam — All Sets (Prolog Solutions)</h1>
-      <p class="lead">All 4 sets of questions, family tree Prolog problems and solutions. Download the full PDF or the Prolog files directly.</p>
+      <p class="lead">All 4 sets of questions with their Prolog answers, plus family tree knowledge bases. PDF and Prolog source files are downloadable.</p>
       <div class="actions">
-        <a class="btn" id="downloadPdf" href="AI_Mid_Exam_Solved.pdf" download>Download PDF</a>
+        <a class="btn" href="AI_Mid_Exam_Solved.pdf" download>Download PDF</a>
       </div>
       <input id="search" placeholder="Search questions or code..." />
     </div>
@@ -36,94 +36,126 @@
   <main class="container content">
     <section id="overview">
       <h2>Overview</h2>
-      <p>This page contains all exam sets (SET-1 to SET-4) with Prolog solutions, plus two family-tree knowledge bases with downloadable <code>.pl</code> files and sample queries.</p>
+      <p>This page contains all exam sets (SET-1 to SET-4) with clear questions and Prolog solutions, plus two family tree programs (<code>.pl</code> files) and the solved PDF.</p>
     </section>
 
     <!-- Exam Sets -->
     <section id="sets">
       <h2>Sets &amp; Solutions</h2>
 
+      <!-- SET 1 -->
       <details open>
-        <summary><strong>SET-1 Questions &amp; Answers</strong></summary>
+        <summary>SET-1 Questions &amp; Answers</summary>
+        <div class="question">1. Write a program to calculate square and cube of a given number.</div>
         <pre class="code">
-% Square and Cube
 square_cube(N, S, C) :- S is N*N, C is N*N*N.
+        </pre>
 
-% Max of 3 numbers
+        <div class="question">2. Write a program to find maximum of three numbers.</div>
+        <pre class="code">
 max3(A,B,C,Max) :- Max is max(A, max(B,C)).
+        </pre>
 
-% Sum 1 to N
+        <div class="question">3. Write a program to calculate sum of 1 to N.</div>
+        <pre class="code">
 sum_n(1,1).
 sum_n(N,Sum) :- N > 1, N1 is N-1, sum_n(N1,Sum1), Sum is Sum1 + N.
         </pre>
       </details>
 
+      <!-- SET 2 -->
       <details>
-        <summary><strong>SET-2 Questions &amp; Answers</strong></summary>
+        <summary>SET-2 Questions &amp; Answers</summary>
+        <div class="question">1. Write a program to calculate area and perimeter of circle.</div>
         <pre class="code">
-% Circle area & perimeter
 circle(R, Area, Perimeter) :- Area is 3.14*R*R, Perimeter is 2*3.14*R.
+        </pre>
 
-% Divisible by 4
+        <div class="question">2. Write a program to check whether given number is divisible by 4.</div>
+        <pre class="code">
 divisible_by_4(N) :- 0 is N mod 4.
+        </pre>
 
-% Sum between N1 and N2
+        <div class="question">3. Write a program to find sum of numbers between N1 and N2.</div>
+        <pre class="code">
 sum_range(N1,N1,N1).
 sum_range(N1,N2,Sum) :- N1 < N2, N3 is N2-1, sum_range(N1,N3,Sum1), Sum is Sum1 + N2.
         </pre>
       </details>
 
+      <!-- SET 3 -->
       <details>
-        <summary><strong>SET-3 Questions &amp; Answers</strong></summary>
+        <summary>SET-3 Questions &amp; Answers</summary>
+        <div class="question">1. Write a program to convert year into minutes.</div>
         <pre class="code">
-% Year to Minutes
 year_to_minutes(Y, M) :- M is Y * 365 * 24 * 60.
+        </pre>
 
-% Odd or Even
+        <div class="question">2. Write a program to check whether given number is odd or even.</div>
+        <pre class="code">
 is_even(N) :- 0 is N mod 2.
 is_odd(N) :- 1 is N mod 2.
+        </pre>
 
-% Series from 1 to N
+        <div class="question">3. Write a program to print series from 1 to N.</div>
+        <pre class="code">
 series(N) :- series_helper(1,N).
 series_helper(I,N) :- I =< N, write(I), nl, I1 is I+1, series_helper(I1,N).
 series_helper(I,N) :- I > N.
         </pre>
       </details>
 
+      <!-- SET 4 -->
       <details>
-        <summary><strong>SET-4 Questions &amp; Answers</strong></summary>
+        <summary>SET-4 Questions &amp; Answers</summary>
+        <div class="question">1. Write a program to calculate area and perimeter of circle.</div>
         <pre class="code">
-% Circle (same as Set-2)
 circle(R, Area, Perimeter) :- Area is 3.14*R*R, Perimeter is 2*3.14*R.
+        </pre>
 
-% Pass or Fail
+        <div class="question">2. Write a program to check whether student is pass or fail.</div>
+        <pre class="code">
 result(Per,'Pass') :- Per >= 40.
 result(Per,'Fail') :- Per < 40.
+        </pre>
 
-% Series from N to 1
+        <div class="question">3. Write a program to print series from N to 1.</div>
+        <pre class="code">
 series(N) :- N > 0, write(N), nl, N1 is N-1, series(N1).
 series(0).
+        </pre>
+
+        <div class="question">4. Write a program to print table of 5.</div>
+        <pre class="code">
+tables :-
+    write('Enter Number for print table:'),
+    read(N),
+    between(1,10,X),
+    A is N*X,
+    write(N),write('*'),write(X),write('='),write(A),nl,
+    fail;
+    true.
         </pre>
       </details>
     </section>
 
-    <!-- Family Tree 1 -->
+    <!-- Family Trees -->
     <section id="family1">
-      <h2>Family Tree — File: <code>ass3to2.pl</code></h2>
+      <h2>Family Tree — File: ass3to2.pl</h2>
       <button class="download-btn" onclick="downloadFile('ass3to2.pl', ass3to2Text)">Download ass3to2.pl</button>
       <pre class="code" id="code1"></pre>
     </section>
 
-    <!-- Family Tree 2 -->
     <section id="family2">
-      <h2>Family Tree — File: <code>ass3to3.pl</code></h2>
+      <h2>Family Tree — File: ass3to3.pl</h2>
       <button class="download-btn" onclick="downloadFile('ass3to3.pl', ass3to3Text)">Download ass3to3.pl</button>
       <pre class="code" id="code2"></pre>
     </section>
 
+    <!-- Embedded PDF -->
     <section id="embeddedPdf">
       <h2>Embedded PDF</h2>
-      <p>You can view the full solved PDF below. Use the download button above to get the PDF.</p>
+      <p>You can view the full solved PDF below or download it.</p>
       <embed src="AI_Mid_Exam_Solved.pdf" type="application/pdf" width="100%" height="600px" />
     </section>
   </main>
@@ -134,89 +166,49 @@ series(0).
   </footer>
 
   <script>
-    // Family dataset 1 (ass3to2.pl)
+    // Family datasets
     const ass3to2Text = `% ass3to2.pl
-male(tom).
-male(bob).
-male(peter).
-male(pat).
-male(jim).
-
-female(pam).
-female(liz).
-female(ann).
-
-parent(pam,bob).
-parent(tom,bob).
-parent(tom,liz).
-parent(bob,ann).
-parent(bob,peter).
-parent(bob,pat).
-parent(pat,jim).
+male(tom). male(bob). male(peter). male(pat). male(jim).
+female(pam). female(liz). female(ann).
+parent(pam,bob). parent(tom,bob). parent(tom,liz).
+parent(bob,ann). parent(bob,peter). parent(bob,pat). parent(pat,jim).
 
 father(X,Y) :- parent(X,Y), male(X).
 mother(X,Y) :- parent(X,Y), female(X).
-
 sister(X,Y) :- parent(Z,X), parent(Z,Y), female(X), X \\\\== Y.
 brother(X,Y) :- parent(Z,X), parent(Z,Y), male(X), X \\\\== Y.
-
 grandparent(X,Y) :- parent(X,Z), parent(Z,Y).
 grandmother(X,Y) :- female(X), parent(X,Z), parent(Z,Y).
 grandfather(X,Y) :- male(X), parent(X,Z), parent(Z,Y).
-
 wife(X,Y) :- parent(X,Z), parent(Y,Z), female(X), male(Y).
 uncle(X,Z) :- brother(X,Y), parent(Y,Z).
 aunt(X,Z) :- sister(X,Y), parent(Y,Z).
 `;
 
-    // Family dataset 2 (ass3to3.pl)
     const ass3to3Text = `% ass3to3.pl
-male(jack).
-male(david).
-male(ray).
-male(john).
-male(peter).
-
-female(karan).
-female(amy).
-female(susan).
-female(liza).
-female(mary).
-
-parent(karan,ray).
-parent(karan,susan).
-parent(jack,ray).
-parent(jack,susan).
-parent(david,john).
-parent(david,liza).
-parent(amy,john).
-parent(amy,liza).
-parent(susan,peter).
-parent(susan,mary).
-parent(john,mary).
-parent(john,peter).
+male(jack). male(david). male(ray). male(john). male(peter).
+female(karan). female(amy). female(susan). female(liza). female(mary).
+parent(karan,ray). parent(karan,susan). parent(jack,ray). parent(jack,susan).
+parent(david,john). parent(david,liza). parent(amy,john). parent(amy,liza).
+parent(susan,peter). parent(susan,mary). parent(john,mary). parent(john,peter).
 
 father(X,Y) :- parent(X,Y), male(X).
 mother(X,Y) :- parent(X,Y), female(X).
-
 sister(X,Y) :- parent(Z,X), parent(Z,Y), female(X), X \\\\== Y.
 brother(X,Y) :- parent(Z,X), parent(Z,Y), male(X), X \\\\== Y.
-
 grandparent(X,Y) :- parent(X,Z), parent(Z,Y).
 grandmother(X,Z) :- mother(X,Y), parent(Y,Z).
 grandfather(X,Z) :- father(X,Y), parent(Y,Z).
-
 wife(X,Y) :- parent(X,Z), parent(Y,Z), female(X), male(Y).
 uncle(X,Z) :- brother(X,Y), parent(Y,Z).
 aunt(X,Z) :- sister(X,Y), parent(Y,Z).
-
 nani(X,Z) :- mother(X,Y), parent(Y,Z).
 nana(X,Z) :- father(X,Y), parent(Y,Z).
 dadi(X,Z) :- mother(X,Y), parent(Y,Z).
 dada(X,Z) :- father(X,Y), parent(Y,Z).
 `;
 
-    // Fill code blocks
+    // Inject code
     document.getElementById('code1').textContent = ass3to2Text;
     document.getElementById('code2').textContent = ass3to3Text;
 
